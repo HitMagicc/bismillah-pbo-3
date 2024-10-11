@@ -1,30 +1,18 @@
 #include <iostream>
+#include <vector>
 using namespace std;
 
 class MatrixSaya {
 private:
     int baris;
     int kolom;
-    int** nilai;
+    vector<vector<int>> nilai;
 
 public:
     MatrixSaya(int baris, int kolom) {
         this->baris = baris;
         this->kolom = kolom;
-        nilai = new int*[baris];
-        for (int i = 0; i < baris; i++) {
-            nilai[i] = new int[kolom];
-            for (int j = 0; j < kolom; j++) {
-                nilai[i][j] = 0; // Initialize matrix with 0
-            }
-        }
-    }
-
-    ~MatrixSaya() {
-        for (int i = 0; i < baris; i++) {
-            delete[] nilai[i];
-        }
-        delete[] nilai;
+        nilai.resize(baris, vector<int>(kolom, 0)); // Inisialisasi matriks dengan 0
     }
 
     void isiMatrix() {
